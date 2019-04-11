@@ -89,7 +89,7 @@ cur.execute("""CREATE TABLE cats (
 
 In order to populate a table, you can use the `INSERT INTO` command, followed by the name of the table to which we want to add data. Then, in parentheses, we put the column names that we will be filling with data. This is followed by the VALUES keyword, which is accompanied by a parentheses enclosed list of the values that correspond to each column name.
 
-Important: Note that you don't have specify the "id" column name or value. Primary Key columns are auto-incrementing. Therefore, since the cats table has an "id" column whose type is INTEGER PRIMARY KEY, you don't have to specify the id column values when you insert data.  As long as you have defined an id column with a data type of INTEGER PRIMARY KEY, a newly inserted row's id column will be automatically given the correct value.
+Important: Note that you don't have to specify the "id" column name or value. Primary Key columns are auto-incrementing. Therefore, since the cats table has an "id" column whose type is INTEGER PRIMARY KEY, you don't have to specify the id column values when you insert data.  As long as you have defined an id column with a data type of INTEGER PRIMARY KEY, a newly inserted row's id column will be automatically given the correct value.
 
 Okay, let's start storing some cats.
 
