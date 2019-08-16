@@ -24,9 +24,6 @@ Remember that you can use the bash `ls` command to preview files and folders in 
 ls
 ```
 
-    CONTRIBUTING.md  LICENSE.md       index.ipynb
-
-
 ## Creating a Database
 
 You've seen how to connect to a database, but did you know creating one is just as easy? All you have to do is create a connection to a non-existent database, and viola! The database will be created simply by establishing a connection.
@@ -47,49 +44,46 @@ If you use the `ls` command once again, you should now see the pets_database.db 
 ls
 ```
 
-    CONTRIBUTING.md   LICENSE.md        index.ipynb       pets_database.db
+    CONTRIBUTING.md    README.md          pets_database.db
+    LICENSE.md         index.ipynb        pets_database1.db
 
 
 ## Creating Tables
 
-Now that you have a database, let's create our cats table along with id, name, age and breed columns. Remember that we use our cursor to execute these SQL statements, and that the statements must be wrapped in quotes ('''SQL statement goes here''' or """SQL statement goes here"""). Indenting portions of your queries can also make them much easier to read and debug.
+Now that you have a database, let's create our cats table along with columns for id, name, age and breed. Remember that we use our cursor to execute these SQL statements, and that the statements must be wrapped in quotes ('''SQL statement goes here''' or """SQL statement goes here"""). Indenting portions of your queries can also make them much easier to read and debug.
 
 ```python
 cur.execute("""CREATE TABLE cats (
-                                    id INTEGER PRIMARY KEY,
-                                    name TEXT,
-                                    age INTEGER,
-                                    breed TEXT
-                                 )
-            """
-           )
+                                id INTEGER PRIMARY KEY,
+                                name TEXT,
+                                age INTEGER,
+                                breed TEXT )
+            """)
 ```
 
 
 ```python
 #Creating the cats table
 cur.execute("""CREATE TABLE cats (
-                                    id INTEGER PRIMARY KEY,
-                                    name TEXT,
-                                    age INTEGER,
-                                    breed TEXT
-                                 )
-            """
-           )
+                                id INTEGER PRIMARY KEY,
+                                name TEXT,
+                                age INTEGER,
+                                breed TEXT )          
+            """)
 ```
 
 
 
 
-    <sqlite3.Cursor at 0x10cad9650>
+    <sqlite3.Cursor at 0x103200b20>
 
 
 
 ## Populating Tables
 
-In order to populate a table, you can use the `INSERT INTO` command, followed by the name of the table to which we want to add data. Then, in parentheses, we put the column names that we will be filling with data. This is followed by the VALUES keyword, which is accompanied by a parentheses enclosed list of the values that correspond to each column name.
+In order to populate a table, you can use the `INSERT INTO` command, followed by the name of the table to which we want to add data. Then, in parentheses, we type the column names that we want to fill with data. This is followed by the `VALUES` keyword, which is accompanied by a parentheses enclosed list of the values that correspond to each column name.
 
-Important: Note that you don't have to specify the "id" column name or value. Primary Key columns are auto-incrementing. Therefore, since the cats table has an "id" column whose type is INTEGER PRIMARY KEY, you don't have to specify the id column values when you insert data.  As long as you have defined an id column with a data type of INTEGER PRIMARY KEY, a newly inserted row's id column will be automatically given the correct value.
+Important: Note that you don't have to specify the "id" column name or value. Primary Key columns are auto-incrementing. Therefore, since the cats table has an "id" column whose type is `INTEGER PRIMARY KEY`, you don't have to specify the id column values when you insert data.  As long as you have defined an id column with a data type of `INTEGER PRIMARY KEY`, a newly inserted row's id column will be automatically given the correct value.
 
 Okay, let's start storing some cats.
 
@@ -100,8 +94,7 @@ To insert a record with values, type the following:
 ```python
 cur.execute('''INSERT INTO cats (name, age, breed) 
                   VALUES ('Maru', 3, 'Scottish Fold');
-            '''
-           )
+            ''')
 ```
 
 
@@ -109,14 +102,13 @@ cur.execute('''INSERT INTO cats (name, age, breed)
 # insert Maru into the pet_database.db here
 cur.execute('''INSERT INTO cats (name, age, breed) 
                   VALUES ('Maru', 3, 'Scottish Fold');
-            '''
-           )
+            ''')
 ```
 
 
 
 
-    <sqlite3.Cursor at 0x10cad9650>
+    <sqlite3.Cursor at 0x103200b20>
 
 
 
@@ -128,18 +120,17 @@ The general pattern is `ALTER TABLE table_name ADD COLUMN column_name column_typ
 
 ## Updating Data
 
-You use UPDATE keyword to change prexisting rows within a table.
+You use `UPDATE` keyword to change prexisting rows within a table.
 
-The UPDATE statement uses a WHERE clause to grab the row you want to update. It identifies the table name you are looking in and resets the data in a particular column to a new value.
+The `UPDATE` statement uses a `WHERE` clause to grab the row you want to update. It identifies the table name you are looking in and resets the data in a particular column to a new value.
 
-A boilerplate UPDATE statement looks like this:
+A boilerplate `UPDATE` statement looks like this:
 
 ```python
 cur.execute('''UPDATE [table name] 
                   SET [column name] = [new value]
                   WHERE [column name] = [value];
-               '''
-              )
+            ''')
 ```
 
 ### Code Along II: UPDATE
@@ -159,17 +150,17 @@ cur.execute('''UPDATE cats SET name = "Hana" WHERE name = "Hannah";''')
 
 
 
-    <sqlite3.Cursor at 0x10cad9650>
+    <sqlite3.Cursor at 0x103200b20>
 
 
 
 ## Deleting Data
 
-You use the DELETE keyword to delete table rows.
+You use the `DELETE` keyword to delete table rows.
 
-Similar to the UPDATE keyword, the delte keyword uses a where clause to select rows. 
+Similar to the `UPDATE` keyword, the `DELETE` keyword uses a `WHERE` clause to select rows. 
 
-A boilerplate DELETE statement looks like this:
+A boilerplate `DELETE` statement looks like this:
 
 ```python
 cur.execute('''DELETE FROM [table name] WHERE [column name] = [value];''')
@@ -193,28 +184,28 @@ cur.execute('''DELETE FROM cats WHERE id = 2;''')
 
 
 
-    <sqlite3.Cursor at 0x10cad9650>
+    <sqlite3.Cursor at 0x103200b20>
 
 
 
-Notice that this time we selected the row to delete using the Primary Key column. Remember that every table row has a Primary Key column that is unique. Lil' Bub was the second row in the database and thus had an id of 2.
+Notice that this time we selected the row to delete using the `PRIMARY KEY` column. Remember that every table row has a `PRIMARY KEY` column that is unique. Lil' Bub was the second row in the database and thus had an id of 2.
 
 ## Saving Changes
 
-While everything may look well and good, if you were to connect to the Database from another jupyter notebook (or elsewhere) the database would appear blank! That is, while the changes are reflected in your current session connection to the database you have yet to commit those changes to the master database so that other users and connections can also view the updates.  
+While everything may look well and good, if you were to connect to the database from another jupyter notebook (or elsewhere) the database would appear blank! That is, while the changes are reflected in your current session connection to the database you have yet to commit those changes to the master database so that other users and connections can also view the updates.  
 
 Before you commit the changes, let's demonstrate this concept.
 
 First, preview the results of the table:
 
 ```python
-cur.execute("""select * from cats;""").fetchall()
+cur.execute("""SELECT * FROM cats;""").fetchall()
 ```
 
 
 ```python
 #Preview the table via the current cursor/connection
-cur.execute("""select * from cats;""").fetchall()
+cur.execute("""SELECT * FROM cats;""").fetchall()
 ```
 
 
@@ -224,12 +215,12 @@ cur.execute("""select * from cats;""").fetchall()
 
 
 
-Now, to demonstrate that these changes aren't reflected to other connections to the database create a 2nd connection/ cursor and run the same preview:
+Now, to demonstrate that these changes aren't reflected to other connections to the database create a 2nd connection/cursor and run the same preview:
 
 ```python
 conn2 = sqlite3.connect('pets_database.db')
 cur2 = conn2.cursor()
-cur2.execute("""select * from cats;""").fetchall()
+cur2.execute("""SELECT * FROM cats;""").fetchall()
 ```
 
 
@@ -238,7 +229,7 @@ cur2.execute("""select * from cats;""").fetchall()
 #Don't overwrite the previous connection: you'll lose all of your work!
 conn2 = sqlite3.connect('pets_database.db')
 cur2 = conn2.cursor()
-cur2.execute("""select * from cats;""").fetchall()
+cur2.execute("""SELECT * FROM cats;""").fetchall()
 ```
 
 
@@ -267,7 +258,7 @@ Now, if you reload your second connection, you should see the updates reflected 
 ```python
 conn2 = sqlite3.connect('pets_database.db')
 cur2 = conn2.cursor()
-cur2.execute("""select * from cats;""").fetchall()
+cur2.execute("""SELECT * FROM cats;""").fetchall()
 ```
 
 
@@ -275,7 +266,7 @@ cur2.execute("""select * from cats;""").fetchall()
 #Preview the table via a reloaded second current cursor/connection 
 conn2 = sqlite3.connect('pets_database.db')
 cur2 = conn2.cursor()
-cur2.execute("""select * from cats;""").fetchall()
+cur2.execute("""SELECT * FROM cats;""").fetchall()
 ```
 
 
@@ -287,4 +278,4 @@ cur2.execute("""select * from cats;""").fetchall()
 
 ## Summary
 
-Congrats! In this lesson, you saw how to create, edit and delete tables and databases using SQL!
+Congrats! In this lesson you saw how to create, edit, and delete tables and databases using SQL!
