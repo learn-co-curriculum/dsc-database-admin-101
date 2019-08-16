@@ -24,8 +24,7 @@ Remember that you can use the bash `ls` command to preview files and folders in 
 ls
 ```
 
-    CONTRIBUTING.md    README.md          index.ipynb
-    LICENSE.md         index-Copy1.ipynb
+    CONTRIBUTING.md  LICENSE.md       README.md        index.ipynb
 
 
 ## Creating a Database
@@ -48,8 +47,8 @@ If you use the `ls` command once again, you should now see the pets_database.db 
 ls
 ```
 
-    CONTRIBUTING.md    README.md          index.ipynb
-    LICENSE.md         index-Copy1.ipynb  pets_database.db
+    CONTRIBUTING.md   README.md         pets_database.db
+    LICENSE.md        index.ipynb
 
 
 ## Creating Tables
