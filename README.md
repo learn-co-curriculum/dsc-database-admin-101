@@ -24,6 +24,10 @@ Remember that you can use the bash `ls` command to preview files and folders in 
 ls
 ```
 
+    CONTRIBUTING.md    README.md          index.ipynb
+    LICENSE.md         index-Copy1.ipynb
+
+
 ## Creating a Database
 
 You've seen how to connect to a database, but did you know creating one is just as easy? All you have to do is create a connection to a non-existent database, and viola! The database will be created simply by establishing a connection.
@@ -44,8 +48,8 @@ If you use the `ls` command once again, you should now see the pets_database.db 
 ls
 ```
 
-    CONTRIBUTING.md    README.md          pets_database.db
-    LICENSE.md         index.ipynb        pets_database1.db
+    CONTRIBUTING.md    README.md          index.ipynb
+    LICENSE.md         index-Copy1.ipynb  pets_database.db
 
 
 ## Creating Tables
@@ -75,7 +79,7 @@ cur.execute("""CREATE TABLE cats (
 
 
 
-    <sqlite3.Cursor at 0x103200b20>
+    <sqlite3.Cursor at 0x10baf3b20>
 
 
 
@@ -108,7 +112,7 @@ cur.execute('''INSERT INTO cats (name, age, breed)
 
 
 
-    <sqlite3.Cursor at 0x103200b20>
+    <sqlite3.Cursor at 0x10baf3b20>
 
 
 
@@ -150,7 +154,7 @@ cur.execute('''UPDATE cats SET name = "Hana" WHERE name = "Hannah";''')
 
 
 
-    <sqlite3.Cursor at 0x103200b20>
+    <sqlite3.Cursor at 0x10baf3b20>
 
 
 
@@ -184,7 +188,7 @@ cur.execute('''DELETE FROM cats WHERE id = 2;''')
 
 
 
-    <sqlite3.Cursor at 0x103200b20>
+    <sqlite3.Cursor at 0x10baf3b20>
 
 
 
