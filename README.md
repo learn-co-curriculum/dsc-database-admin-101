@@ -53,7 +53,7 @@ ls
 
 ## Creating Tables
 
-Now that you have a database, let's create our cats table along with columns for id, name, age and breed. Remember that we use our cursor to execute these SQL statements, and that the statements must be wrapped in quotes ('''SQL statement goes here''' or """SQL statement goes here"""). Indenting portions of your queries can also make them much easier to read and debug.
+Now that you have a database, let's create our cats table along with columns for id, name, age, and breed. Remember that we use our cursor to execute these SQL statements, and that the statements must be wrapped in quotes ('''SQL statement goes here''' or """SQL statement goes here"""). Indenting portions of your queries can also make them much easier to read and debug.
 
 ```python
 cur.execute("""CREATE TABLE cats (
