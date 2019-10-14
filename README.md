@@ -3,7 +3,7 @@
 
 ## Introduction
 
-Now that you've seen how to access and retrieve information from a SQL database, let's investigate how you could create or alter an existing database. Although there is still much to learn, this will begin to lead you into the realm of database administration.
+Now that you've seen how to access and retrieve information from a SQL database, let's investigate how you could create or alter an existing database. Although there is still much to learn, this will lead you into the realm of database administration.
 
 ## Objectives
 
@@ -13,6 +13,7 @@ You will be able to:
 * Create rows in a SQL table
 * Alter entries in a SQL table
 * Delete entries in a SQL table
+* Determine when it is necessary to commit changes to a database
 * Commit changes via sqlite3
 
 ## Previewing Files in the Current Working Directory
@@ -38,7 +39,7 @@ conn = sqlite3.connect('pets_database.db')
 cur = conn.cursor()
 ```
 
-## Repreview Files
+## Re-preview Files
 
 If you use the `ls` command once again, you should now see the pets_database.db file there.
 
@@ -78,7 +79,7 @@ cur.execute("""CREATE TABLE cats (
 
 
 
-    <sqlite3.Cursor at 0x10baf3b20>
+    <sqlite3.Cursor at 0x1071921f0>
 
 
 
@@ -86,7 +87,7 @@ cur.execute("""CREATE TABLE cats (
 
 In order to populate a table, you can use the `INSERT INTO` command, followed by the name of the table to which we want to add data. Then, in parentheses, we type the column names that we want to fill with data. This is followed by the `VALUES` keyword, which is accompanied by a parentheses enclosed list of the values that correspond to each column name.
 
-Important: Note that you don't have to specify the "id" column name or value. Primary Key columns are auto-incrementing. Therefore, since the cats table has an "id" column whose type is `INTEGER PRIMARY KEY`, you don't have to specify the id column values when you insert data.  As long as you have defined an id column with a data type of `INTEGER PRIMARY KEY`, a newly inserted row's id column will be automatically given the correct value.
+**Important**: Note that you don't have to specify the "id" column name or value. Primary Key columns are auto-incrementing. Therefore, since the cats table has an "id" column whose type is `INTEGER PRIMARY KEY`, you don't have to specify the id column values when you insert data.  As long as you have defined an id column with a data type of `INTEGER PRIMARY KEY`, a newly inserted row's id column will be automatically given the correct value.
 
 Okay, let's start storing some cats.
 
@@ -111,7 +112,7 @@ cur.execute('''INSERT INTO cats (name, age, breed)
 
 
 
-    <sqlite3.Cursor at 0x10baf3b20>
+    <sqlite3.Cursor at 0x1071921f0>
 
 
 
@@ -153,7 +154,7 @@ cur.execute('''UPDATE cats SET name = "Hana" WHERE name = "Hannah";''')
 
 
 
-    <sqlite3.Cursor at 0x10baf3b20>
+    <sqlite3.Cursor at 0x1071921f0>
 
 
 
@@ -187,7 +188,7 @@ cur.execute('''DELETE FROM cats WHERE id = 2;''')
 
 
 
-    <sqlite3.Cursor at 0x10baf3b20>
+    <sqlite3.Cursor at 0x1071921f0>
 
 
 
@@ -195,7 +196,7 @@ Notice that this time we selected the row to delete using the `PRIMARY KEY` colu
 
 ## Saving Changes
 
-While everything may look well and good, if you were to connect to the database from another jupyter notebook (or elsewhere) the database would appear blank! That is, while the changes are reflected in your current session connection to the database you have yet to commit those changes to the master database so that other users and connections can also view the updates.  
+While everything may look well and good, if you were to connect to the database from another Jupyter notebook (or elsewhere) the database would appear blank! That is, while the changes are reflected in your current session connection to the database you have yet to commit those changes to the master database so that other users and connections can also view the updates.  
 
 Before you commit the changes, let's demonstrate this concept.
 
@@ -281,4 +282,4 @@ cur2.execute("""SELECT * FROM cats;""").fetchall()
 
 ## Summary
 
-Congrats! In this lesson you saw how to create, edit, and delete tables and databases using SQL!
+Congrats! In this lesson, you learned how to create, edit, and delete tables and databases using SQL!
