@@ -1,4 +1,3 @@
-
 # Database Admin 101
 
 ## Introduction
@@ -8,13 +7,14 @@ Now that you've seen how to access and retrieve information from a SQL database,
 ## Objectives
 
 You will be able to:
+
 - Create a SQL database
 - Create a SQL table
 - Create rows in a SQL table
 - Alter entries in a SQL table
 - Delete entries in a SQL table
 - Determine when it is necessary to commit changes to a database
-- Commit changes via sqlite3
+- Commit changes via `sqlite3`
 
 ## Previewing Files in the Current Working Directory
 
